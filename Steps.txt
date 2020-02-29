@@ -1,0 +1,16 @@
+heroku login
+
+heroku container:login
+
+docker build -t registry.heroku.com/online-programming/web .
+
+docker push registry.heroku.com/online-programming/web
+
+heroku container:release web -a online-programming
+
+heroku open -a online-programming
+
+
+Remove all containers
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -a -q)

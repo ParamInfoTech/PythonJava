@@ -1,0 +1,51 @@
+<html>
+   <head> 
+    <base href="/">
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+      <link rel="stylesheet" href="/static/codemirror.css"> 
+      <script src="/static/codemirror.js"></script>
+      <script src="/static/python.js"></script> 
+
+      <link rel="stylesheet" href="/static/bootstrap4/bootstrap.min.css"> 
+      <script src="/static/bootstrap4/jquery.min.js"></script>
+      <script src="/static/bootstrap4/bootstrap.min.js"></script>      
+      <script src="/static/bootstrap4/popper.min.js"></script>
+
+      <link rel="stylesheet" href="/static/CSS/main.css"> 
+
+      <script type="text/javascript">
+        window.onload=function(){
+          CodeMirror.fromTextArea(document.getElementById('textbox'), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "python"
+          });
+        }
+      </script> 
+   </head> 
+   <body> 
+      <%- include ("header")%>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <form action = "/RunPython3" method="POST">
+            <button type="submit">Run</button>  <br>
+            <textarea id="textbox" name="textbox">
+<% if(locals.code != ""){ %><%= locals.code %>
+<% } %>
+            </textarea>                                     
+          </form>  
+          </div>
+            
+          <div class="col-lg-6">
+            <br>
+            <textarea class="output-area">
+<% if(locals.output != ""){ %><%= locals.output %>
+<% } %>
+            </textarea>
+          </div>
+        </div>         
+      </div>
+   </body>
+</html>

@@ -1,0 +1,33 @@
+FROM node:alpine
+
+RUN apk add python3
+
+RUN apk add openjdk8
+
+ENV ENV="/etc/profile" 
+
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+
+ENV PATH="$JAVA_HOME/bin:${PATH}"
+
+RUN mkdir /app
+
+ADD . /app
+
+WORKDIR /app
+
+CMD node index.js --bind 0.0.0.0:$PORT
+
+
+
+FROM vijaykatkar/node-python-java
+
+RUN npm install body-parser
+
+RUN mkdir /app
+
+ADD . /app
+
+WORKDIR /app
+
+CMD node index.js --bind 0.0.0.0:$PORT

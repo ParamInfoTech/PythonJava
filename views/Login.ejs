@@ -1,0 +1,30 @@
+<html>
+   <head> 
+    <base href="/">
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+   </head> 
+   <body> 
+      <div">
+        <center>
+        <table>
+          <form action = "/Login" method="POST">
+            <tr>
+              <td> UerId </td>
+              <td> <input type="text" name="user" id="user" placeholder="User Id"></input> </td>
+            </tr>
+            <tr>
+              <td> Password </td>
+              <td> <input type="password" name="pw" id="pw" placeholder="PASSWORD"> </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td> <input type="submit" name="login" id="login" value="Login"> </td>
+            </tr>
+          </form> 
+        </table>
+<% if(locals.error != ""){%><%= locals.error%>
+<% } %>
+        </center>        
+      </div>
+   </body>
+</html>
